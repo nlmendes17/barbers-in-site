@@ -199,14 +199,36 @@ body {
 }
 
 /* RESPONSIVO */
-@media(max-width: 900px){
-  .services-wrapper {
-    grid-template-columns: 1fr;
+@media(max-width: 768px){
+
+  .menu {
+    display: none;
   }
 
-  .services-image img {
-    height: 300px;
+  .content h1 {
+    font-size: 38px;
   }
+
+  .content h2 {
+    font-size: 22px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
 }
 
 /* WHATS */
@@ -220,7 +242,6 @@ body {
   border-radius: 50%;
   text-decoration: none;
 }
- <style>
 
 /* ===== EQUIPE ===== */
 .team {
@@ -466,8 +487,13 @@ body {
     <p>Tradição, estilo e precisão em cada detalhe.</p>
 
     <div class="buttons">
-      <a href="#" class="btn primary">Agendar horário</a>
-      <a href="#" class="btn secondary">Nossos serviços</a>
+     <a href="https://wa.me/554135989540" target="_blank" class="btn primary">
+      Agendar horário
+     </a>
+
+     <a href="#servicos" class="btn secondary">
+      Nossos serviços
+     </a>
     </div>
   </div>
 </section>
@@ -634,7 +660,7 @@ body {
 
   <!-- BOTÃO FINAL -->
   <div class="contact-cta">
-    <a href="https://wa.me/413598-9540" target="_blank" class="btn primary">
+    <a href="https://wa.me/554135989540" target="_blank" class="btn primary">
     Agendar horário
     </a>
 
@@ -645,7 +671,7 @@ body {
 
 </section>
 
-<a href="#" class="whatsapp">💬</a>
+<a href="https://wa.me/554135989540" target="_blank" class="whatsapp">💬</a>
 
 <script>
 const reveals = document.querySelectorAll('.reveal');
