@@ -388,6 +388,53 @@ body {
   color: #d4a017;
   font-weight: bold;
 }
+
+  .contact {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.contact-item {
+  text-align: center;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(212,160,23,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-size: 22px;
+  color: #d4a017;
+}
+
+.contact-item h3 {
+  margin-bottom: 10px;
+}
+
+.contact-item p {
+  color: #bbb;
+  font-size: 14px;
+}
+
+.contact-cta {
+  margin-top: 60px;
+}
+
+.contact-cta .btn {
+  padding: 15px 30px;
+  font-size: 14px;
+}
   
 </style>
 </head> 
@@ -547,6 +594,49 @@ body {
       </div>
     </div>
   </div>
+</section>
+
+  <!-- CONTATO -->
+  <section class="contact">
+
+  <p class="subtitle">VENHA NOS VISITAR</p>
+  <h2 class="title">Contato</h2>
+
+  <div class="contact-grid">
+
+    <div class="contact-item">
+      <div class="icon">📍</div>
+      <h3>Endereço</h3>
+      <p>Rua Exemplo, 123<br>Curitiba - PR</p>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon">📞</div>
+      <h3>Telefone</h3>
+      <p>(41) 99999-9999</p>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon">🕒</div>
+      <h3>Horário</h3>
+      <p>Seg - Sex: 9h às 20h<br>Sáb: 9h às 18h</p>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon">✉️</div>
+      <h3>E-mail</h3>
+      <p>contato@barbersin.com</p>
+    </div>
+
+  </div>
+
+  <!-- BOTÃO FINAL -->
+  <div class="contact-cta">
+    <a href="https://wa.me/5541999999999" target="_blank" class="btn primary">
+      AGENDAR PELO WHATSAPP
+    </a>
+  </div>
+
 </section>
 
 <a href="#" class="whatsapp">💬</a>
