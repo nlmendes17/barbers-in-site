@@ -1,195 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barbers In</title>
-  <style>
-    :root {
-      --bg: #000;
-      --text: #fff;
-      --accent: #888;
-      --insta: #E1306C;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbers In</title>
 
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-    }
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#000;
+  color:#fff;
+  text-align:center;
+}
 
-    header {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      border-bottom: 2px solid var(--text);
-      flex-wrap: wrap;
-    }
+/* HERO */
+.hero {
+  padding:80px 20px;
+}
 
-    header img.logo {
-      height: 120px;
-      animation: zoomIn 1s ease;
-    }
+.hero h1 {
+  font-size:32px;
+  margin-bottom:10px;
+}
 
-    header img.side-icon {
-      height: 50px;
-      animation: fadeIn 1s ease;
-    }
+.hero p {
+  color:#bbb;
+  margin-bottom:25px;
+}
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background-color: #111;
-      padding: 15px;
-      gap: 10px;
-      animation: slideDown 1s ease;
-    }
+.btn {
+  background:#25D366;
+  color:#000;
+  padding:14px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s, transform 0.3s;
-      padding: 10px 15px;
-      border-left: 2px solid #333;
-    }
+/* SECTIONS */
+section {
+  padding:60px 20px;
+}
 
-    nav a:first-child {
-      border-left: none;
-    }
+h2 {
+  margin-bottom:20px;
+}
 
-    nav a:hover {
-      color: var(--insta);
-      transform: scale(1.1);
-    }
+/* GALERIA */
+.carousel {
+  display:flex;
+  overflow-x:auto;
+  gap:15px;
+  padding:10px;
+}
 
-    section {
-      padding: 40px 20px;
-      text-align: center;
-      animation: fadeInUp 1s ease;
-    }
+.carousel img {
+  height:260px;
+  border-radius:12px;
+}
 
-    h2 {
-      border-bottom: 2px solid var(--text);
-      display: inline-block;
-      padding-bottom: 5px;
-      margin-bottom: 30px;
-    }
+/* BENEFICIOS */
+.box {
+  background:#111;
+  padding:20px;
+  border-radius:12px;
+  margin:10px;
+}
 
-    iframe {
-      border: 0;
-      width: 100%;
-      height: 300px;
-      border-radius: 12px;
-    }
-
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 10px;
-      padding: 10px;
-    }
-
-    .carousel img {
-      height: 300px;
-      border-radius: 12px;
-      scroll-snap-align: center;
-      flex-shrink: 0;
-      transition: transform 0.4s ease;
-    }
-
-    .carousel img:hover {
-      transform: scale(1.05);
-    }
-
-    .instagram-link {
-      display: inline-block;
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 10px;
-      text-decoration: none;
-      color: var(--insta);
-    }
-
-    @media (max-width: 768px) {
-      header img.logo {
-        height: 90px;
-      }
-
-      header img.side-icon {
-        height: 40px;
-      }
-
-      .carousel img {
-        width: 90%;
-        max-width: 300px;
-      }
-
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a {
-        border-left: none;
-        border-right: 1px solid #333;
-        padding: 8px 12px;
-        white-space: nowrap;
-        font-size: 14px;
-      }
-
-      nav a:last-child {
-        border-right: none;
-      }
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-  </style>
+/* WHATS FLOAT */
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#000;
+  font-size:22px;
+  padding:15px;
+  border-radius:50%;
+  text-decoration:none;
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <img src="maestro.png" alt="maestro" class="side-icon" />
-    <img src="logo.png" alt="Logo Barbers IN" class="logo" />
-    <img src="maestro1.png" alt="maestro1" class="side-icon" />
-  </header>
 
-  <nav>
-    <a href="agendamento.html">Agendar Horário</a>
-    <a href="produtos.html">Nossos Produtos</a>
-    <a href="#localizacao">Localização</a>
-    <a href="#instagram">Instagram</a>
-  </nav>
+<!-- HERO -->
+<div class="hero">
+<h1>Seu corte agendado em segundos</h1>
+<p>Sem enrolação. Clique e fale direto no WhatsApp</p>
 
-  <section id="barbearia">
-    <h2>Nossa Barbearia</h2>
-    <div class="carousel">
+<a class="btn" href="https://wa.me/5541987776250">
+Agendar agora
+</a>
+</div>
+
+<!-- BENEFICIOS -->
+<section>
+<h2>Por que escolher a Barbers In</h2>
+
+<div class="box">🔥 Atendimento rápido e sem fila</div>
+<div class="box">💈 Profissionais qualificados</div>
+<div class="box">📲 Agendamento direto no WhatsApp</div>
+
+</section>
+
+<!-- GALERIA -->
+<section>
+<h2>Nosso trabalho</h2>
+
+<div class="carousel">
     <img src="Page1.png">
     <img src="Page2.png">
     <img src="Page3.png">
@@ -202,21 +122,32 @@
     <img scr="Page10.png">
     <img scr="Page11.png">
     <img scr="Page12.png">
-    </div>
-  </section>
+</div>
 
-  <section id="instagram">
-    <h2>Instagram</h2>
-    <p><strong style="color: white;">Instagram</strong>
-      <a class="instagram-link" target="_blank" href="https://www.instagram.com/barbers_in/">@barbers_in</a>
-    </p>
-  </section>
+</section>
 
-  <section id="localizacao">
-    <h2>Como Chegar</h2>
-    <iframe
-      src="https://www.google.com/maps?q=R Mateus Leme, nº 762, 80530-010, Curitiba&output=embed"></iframe>
-  </section>
+<!-- PROVA SOCIAL -->
+<section>
+<h2>Clientes satisfeitos</h2>
+
+<p>⭐⭐⭐⭐⭐ Melhor barbearia da região</p>
+<p>⭐⭐⭐⭐⭐ Atendimento rápido e top</p>
+
+</section>
+
+<!-- CTA FINAL -->
+<section>
+<h2>Agende agora</h2>
+<p>Evite espera e garanta seu horário</p>
+
+<a class="btn" href="https://wa.me/5541987776250">
+Falar no WhatsApp
+</a>
+
+</section>
+
+<!-- BOTAO WHATS -->
+<a href="https://wa.me/5541987776250" class="whatsapp">💬</a>
+
 </body>
-
 </html>
