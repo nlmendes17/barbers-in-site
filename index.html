@@ -442,19 +442,21 @@ body {
 <body>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="overlay"></div>
 
   <div class="navbar">
     <div class="logo">✂️ BARBERS IN</div>
 
     <div class="menu">
-      <a href="#">Início</a>
-      <a href="#">Serviços</a>
-      <a href="#">Equipe</a>
-      <a href="#">Depoimentos</a>
-      <a href="#">Contato</a>
-      <a href="#" class="btn-agendar">Agendar</a>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+      <a href="https://wa.me/55413598-9540" target="_blank" class="btn-agendar">
+      Agendar
+      </a>
     </div>
   </div>
 
@@ -471,7 +473,7 @@ body {
 </section>
 
 <!-- SERVIÇOS -->
-<section class="services">
+<section class="services" id="servicos">
 
   <h2 class="title">Nossos Serviços</h2>
 
@@ -523,7 +525,7 @@ body {
 </section>
 
   <!-- team -->
-  <section class="team">
+  <section class="team" id="equipe">
 
   <h2 class="title">Nossa Equipe</h2>
   <p class="subtitle">CONHEÇA NOSSOS PROFISSIONAIS</p>
@@ -557,7 +559,7 @@ body {
 </section>
 
 <!-- DEPOIMENTOS -->
-  <section class="testimonials">
+  <section class="testimonials" id="depoimentos">
 
   <h2 class="title">Depoimentos</h2>
   <p class="subtitle">O QUE DIZEM NOSSOS CLIENTES</p>
@@ -597,7 +599,7 @@ body {
 </section>
 
   <!-- CONTATO -->
-  <section class="contact">
+  <section class="contact" id="contato">
 
   <h2 class="title">Contato</h2>
   <p class="subtitle">VENHA NOS VISITAR</p>
@@ -633,7 +635,11 @@ body {
   <!-- BOTÃO FINAL -->
   <div class="contact-cta">
     <a href="https://wa.me/55413598-9540" target="_blank" class="btn primary">
-      AGENDAR PELO WHATSAPP
+    Agendar horário
+    </a>
+
+    <a href="#servicos" class="btn secondary">
+    Nossos serviços
     </a>
   </div>
 
