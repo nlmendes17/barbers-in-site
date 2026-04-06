@@ -281,18 +281,37 @@ body {
   position: absolute;
   bottom: 15px;
   left: 50%;
-  transform: translateX(-50%);
-  background: #d4a017;
-  padding: 10px 12px;
+  transform: translateX(-50%) scale(0.8);
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.6);
   border-radius: 50%;
-  color: #000;
-  text-decoration: none;
+
   opacity: 0;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
-  .insta:hover {
-  transform: translateX(-50%) scale(1.2);
-  background: #fff;
+
+/* TAMANHO DO ÍCONE */
+.insta img {
+  width: 20px;
+}
+
+/* APARECER NO HOVER */
+.img-box:hover .insta {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* EFEITO HOVER NO BOTÃO */
+.insta:hover {
+  background: #d4a017;
+  transform: translateX(-50%) scale(1.1);
 }
 
 /* HOVER */
@@ -417,7 +436,7 @@ body {
       <div class="img-box">
         <img src="Barbeiro2.png">
          <a href="https://instagram.com/usuario" target="_blank" class="insta">
-         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="20">
+         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
          </a>
       </div>
       <h3>Henrique</h3>
@@ -428,8 +447,8 @@ body {
     <div class="team-card reveal">
       <div class="img-box">
         <img src="Barbeiro1.png">
-         <a href="https://instagram.com/usuario" target="_blank" class="insta">
-         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="20">
+         <a href="https://www.instagram.com/diegopedrosomaciel/" target="_blank" class="insta">
+         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
          </a>
       </div>
       <h3>Diego</h3>
