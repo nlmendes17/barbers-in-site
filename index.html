@@ -6,155 +6,164 @@
 <title>Barbers In</title>
 
 <style>
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #000;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
   color: #fff;
-}
-
-/* HEADER */
-header {
-  padding: 20px;
-  text-align: center;
-  border-bottom: 1px solid #222;
-}
-
-.logo {
-  font-size: 22px;
-  letter-spacing: 3px;
 }
 
 /* HERO */
 .hero {
-  padding: 100px 20px;
+  height: 100vh;
+  background: url('ambiente.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+/* OVERLAY ESCURO */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+/* NAVBAR */
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.logo span {
+  color: #d4a017;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  gap: 25px;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* BOTÃO AGENDAR */
+.btn-agendar {
+  background: #d4a017;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* TEXTO CENTRAL */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.hero h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+.content h1 {
+  font-size: 60px;
 }
 
-.hero p {
-  color: #bbb;
+.content h2 {
+  font-size: 40px;
+  color: #d4a017;
+  margin: 10px 0;
+}
+
+.content p {
+  color: #ccc;
   margin-bottom: 25px;
 }
 
+/* BOTÕES */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
 .btn {
-  background: #25D366;
-  color: #000;
-  padding: 14px 26px;
-  border-radius: 10px;
+  padding: 12px 22px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
 }
 
-/* SECTIONS */
-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-h2 {
-  margin-bottom: 20px;
-}
-
-/* SERVIÇOS */
-.service {
-  background: #111;
-  margin: 10px auto;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 400px;
-}
-
-/* GALERIA */
-.gallery {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 20px;
-}
-
-.gallery img {
-  height: 260px;
-  border-radius: 12px;
-}
-
-/* FOOTER */
-footer {
-  padding: 40px;
-  text-align: center;
-  color: #777;
-}
-
-/* WHATS */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
+.primary {
+  background: #d4a017;
   color: #000;
-  padding: 15px;
-  border-radius: 50%;
-  text-decoration: none;
+}
+
+.secondary {
+  border: 1px solid #fff;
+  color: #fff;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">BARBERS IN</div>
-</header>
+<section class="hero">
 
-<div class="hero">
-  <h1>Cortes modernos e atendimento de qualidade</h1>
-  <p>Agende seu horário de forma rápida e prática</p>
+  <div class="overlay"></div>
 
-  <a class="btn" href="https://wa.me/5541987776250">
-    Agendar pelo WhatsApp
-  </a>
-</div>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">
+      ✂️ <span>Barbers In</span>
+    </div>
 
-<section>
-  <h2>Serviços</h2>
+    <div class="menu">
+      <a href="#">Início</a>
+      <a href="#">Serviços</a>
+      <a href="#">Equipe</a>
+      <a href="#">Depoimentos</a>
+      <a href="#">Contato</a>
+      <a href="#" class="btn-agendar">Agendar</a>
+    </div>
+  </div>
 
-  <div class="service">Corte masculino</div>
-  <div class="service">Barba</div>
-  <div class="service">Corte + Barba</div>
+  <!-- CONTEÚDO -->
+  <div class="content">
+    <h1>Barbers In</h1>
+    <h2>A arte do corte em um só lugar</h2>
+    <p>Tradição, estilo e precisão em cada detalhe. Sua experiência começa aqui.</p>
 
-</section>
-
-<section>
-  <h2>Nosso espaço</h2>
-
-  <div class="gallery">
-    <img src="Page1.png">
-    <img src="Page2.png">
-    <img src="Page3.png">
-    <img src="Page4.png">
-    <img src="Page5.png">
+    <div class="buttons">
+      <a href="#" class="btn primary">Agendar horário</a>
+      <a href="#" class="btn secondary">Nossos serviços</a>
+    </div>
   </div>
 
 </section>
-
-<section>
-  <h2>Agendamento rápido</h2>
-  <p>Clique no botão abaixo e fale direto conosco</p>
-
-  <a class="btn" href="https://wa.me/5541987776250">
-    Falar no WhatsApp
-  </a>
-
-</section>
-
-<footer>
-  Barbers In • Curitiba
-</footer>
-
-<a href="https://wa.me/5541987776250" class="whatsapp">💬</a>
 
 </body>
 </html>
