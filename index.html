@@ -274,6 +274,7 @@ body {
   left: 0;
   opacity: 0;
   transition: 0.3s;
+  z-index: 1; 
 }
 
 /* INSTAGRAM */
@@ -290,41 +291,30 @@ body {
   align-items: center;
   justify-content: center;
 
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   border-radius: 50%;
 
   opacity: 0;
   transition: 0.3s ease;
+
+  z-index: 2; /* 👈 FICA NA FRENTE */
+  pointer-events: auto; /* 👈 GARANTE CLIQUE */
 }
 
-/* TAMANHO DO ÍCONE */
 .insta img {
-  width: 20px;
+  width: 18px;
 }
 
-/* APARECER NO HOVER */
+/* APARECER */
 .img-box:hover .insta {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 
-/* EFEITO HOVER NO BOTÃO */
+/* HOVER */
 .insta:hover {
   background: #d4a017;
   transform: translateX(-50%) scale(1.1);
-}
-
-/* HOVER */
-.img-box:hover img {
-  transform: scale(1.05);
-}
-
-.img-box:hover::after {
-  opacity: 1;
-}
-
-.img-box:hover .insta {
-  opacity: 1;
 }
 
 /* TEXTO */
