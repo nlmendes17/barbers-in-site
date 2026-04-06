@@ -21,7 +21,7 @@ body {
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('Ambiente.png') center/cover no-repeat;
+  background: url('barbearia.jpg') center/cover no-repeat;
   position: relative;
 }
 
@@ -48,7 +48,6 @@ body {
 .logo {
   font-weight: bold;
   font-size: 18px;
-  letter-spacing: 2px;
 }
 
 .menu {
@@ -119,14 +118,13 @@ body {
 /* SERVIÇOS */
 .services {
   padding: 100px 20px;
-  text-align: center;
 }
 
 .title {
+  text-align: center;
   font-size: 40px;
   margin-bottom: 60px;
   font-family: serif;
-  letter-spacing: 2px;
 }
 
 .title::after {
@@ -138,36 +136,54 @@ body {
   margin: 10px auto;
 }
 
-.services-grid {
+/* GRID */
+.services-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
 }
 
-.card {
+/* IMAGEM */
+.services-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* LISTA */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ITEM */
+.service-item {
   background: #111;
-  padding: 25px;
+  padding: 20px;
   border-radius: 12px;
-  text-align: left;
   position: relative;
   transition: 0.3s;
 }
 
-.card span {
+.service-item span {
   position: absolute;
-  top: 20px;
   right: 20px;
+  top: 20px;
   color: #d4a017;
   font-weight: bold;
 }
 
-.card p {
+.service-item p {
   color: #bbb;
+  margin-top: 5px;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(212,160,23,0.3);
+.service-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 0 20px rgba(212,160,23,0.3);
 }
 
 /* ANIMAÇÃO */
@@ -180,6 +196,17 @@ body {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* RESPONSIVO */
+@media(max-width: 900px){
+  .services-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .services-image img {
+    height: 300px;
+  }
 }
 
 /* WHATS */
@@ -232,52 +259,58 @@ body {
 
   <h2 class="title">Nossos Serviços</h2>
 
-  <div class="services-grid">
+  <div class="services-wrapper">
 
-    <div class="card reveal">
-      <h3>Corte Masculino</h3>
-      <span>R$ 50</span>
-      <p>Corte moderno e personalizado.</p>
+    <div class="services-image">
+      <img src="barbearia.jpg">
     </div>
 
-    <div class="card reveal">
-      <h3>Corte + Barba</h3>
-      <span>R$ 80</span>
-      <p>Visual completo e alinhado.</p>
-    </div>
+    <div class="services-list">
 
-    <div class="card reveal">
-      <h3>Barba Completa</h3>
-      <span>R$ 40</span>
-      <p>Acabamento com toalha quente.</p>
-    </div>
+      <div class="service-item reveal">
+        <h3>Corte de Cabelo</h3>
+        <span>R$ 70</span>
+        <p>35min • Corte moderno</p>
+      </div>
 
-    <div class="card reveal">
-      <h3>Tratamento Capilar</h3>
-      <span>R$ 60</span>
-      <p>Hidratação e cuidado profissional.</p>
-    </div>
+      <div class="service-item reveal">
+        <h3>Corte e Barba Express</h3>
+        <span>R$ 95</span>
+        <p>45min • Rápido e alinhado</p>
+      </div>
 
-    <div class="card reveal">
-      <h3>Corte Infantil</h3>
-      <span>R$ 35</span>
-      <p>Cortes modernos para crianças.</p>
-    </div>
+      <div class="service-item reveal">
+        <h3>Corte e Barba Completo</h3>
+        <span>R$ 135</span>
+        <p>1h05 • Experiência completa</p>
+      </div>
 
-    <div class="card reveal">
-      <h3>Sobrancelha</h3>
-      <span>R$ 25</span>
-      <p>Alinhamento e acabamento.</p>
+      <div class="service-item reveal">
+        <h3>Corte na Máquina</h3>
+        <span>R$ 45</span>
+        <p>20min • Sem degradê</p>
+      </div>
+
+      <div class="service-item reveal">
+        <h3>Barba Completa</h3>
+        <span>R$ 70</span>
+        <p>35min • Toalha quente</p>
+      </div>
+
+      <div class="service-item reveal">
+        <h3>Sobrancelha</h3>
+        <span>R$ 25</span>
+        <p>10min • Acabamento</p>
+      </div>
+
     </div>
 
   </div>
 
 </section>
 
-<!-- WHATS -->
 <a href="#" class="whatsapp">💬</a>
 
-<!-- JS ANIMAÇÃO -->
 <script>
 const reveals = document.querySelectorAll('.reveal');
 
