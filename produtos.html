@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - Barbearia HMRO</title>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .product {
+      background-color: #111;
+      padding: 15px;
+      border-radius: 10px;
+      width: 220px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      animation: fadeInUp 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.1);
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+
+    .product p.stock {
+      font-size: 0.9em;
+      color: #0f0;
+      margin: 5px 0 10px;
+    }
+
+    .product button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 8px 10px;
+      margin-top: auto;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .product button:hover {
+      background-color: #ccc;
+    }
+
+    #cart-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      color: black;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #cart-popup {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 15px;
+      z-index: 1001;
+      width: 250px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    #cart-popup ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+
+    #cart-popup li {
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #cart-popup button.remove {
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #cart-popup button.finalize {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #cart-popup button.finalize:hover {
+      background-color: #ccc;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Nossos Produtos</h1>
+    <div class="product-grid">
+      <div class="product">
+        <img src="xwayazul.png" alt="Pomada">
+        <h3>Pomada Modeladora XWay Ultra Form</h3>
+        <p>Alta fixação e brilho moderado.</p>
+        <p class="stock">Disponível em estoque</p>
+        <button onclick="addToCart('Pomada Modeladora XWay Ultra Form')">Adicionar ao carrinho</button>
+      </div>
+      <div class="product">
+        <img src="xwaycinza.png" alt="Pomada">
+        <h3>Pomada Modeladora XWay Clássica Black</h3>
+        <p>Alta fixação e brilho moderado.</p>
+        <p class="stock">Disponível em estoque</p>
+        <button onclick="addToCart('Pomada Modeladora XWay Clássica Black')">Adicionar ao carrinho</button>
+      </div>
+      <div class="product">
+        <img src="xwaylaranja.png" alt="Pomada">
+        <h3>Pomada Modeladora XWay Clássica Caramelo</h3>
+        <p>Alta fixação e brilho moderado.</p>
+        <p class="stock">Disponível em estoque</p>
+        <button onclick="addToCart('Pomada Modeladora XWay Clássica Caramelo')">Adicionar ao carrinho</button>
+      </div>
+      <div class="product">
+        <img src="oleobarba.png" alt="Óleo de Barba">
+        <h3>Óleo para barba</h3>
+        <p>Deixa os fios alinhados, protegidos e macios.</p>
+        <p class="stock">Disponível em estoque</p>
+        <button onclick="addToCart('Óleo para barba')">Adicionar ao carrinho</button>
+      </div>
+      <div class="product">
+        <img src="xwayazul1.png" alt="Blend Capilar">
+        <h3>Blend Capilar</h3>
+        <p>Estimula o crescimento e combate a queda.</p>
+        <p class="stock">Disponível em estoque</p>
+        <button onclick="addToCart('Blend Capilar')">Adicionar ao carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-button" onclick="toggleCart()">🛒<span id="cart-count">0</span></div>
+
+  <div id="cart-popup">
+    <ul id="cart-items"></ul>
+    <button class="finalize" onclick="checkout()">Finalizar pedido</button>
+  </div>
+
+  <script>
+    const carrinho = [];
+
+    function addToCart(produto) {
+      carrinho.push(produto);
+      document.getElementById('cart-count').innerText = carrinho.length;
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '';
+      carrinho.forEach((produto, index) => {
+        const li = document.createElement('li');
+        li.textContent = produto;
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = '✖';
+        removeBtn.className = 'remove';
+        removeBtn.onclick = () => removeItem(index);
+        li.appendChild(removeBtn);
+        cartItems.appendChild(li);
+      });
+    }
+
+    function toggleCart() {
+      const popup = document.getElementById('cart-popup');
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function removeItem(index) {
+      carrinho.splice(index, 1);
+      document.getElementById('cart-count').innerText = carrinho.length;
+      renderCart();
+    }
+
+    function checkout() {
+      if (carrinho.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+      const msg = encodeURIComponent(`Olá! Gostaria de comprar os seguintes produtos:\n- ${carrinho.join('\n- ')}`);
+      window.open(`https://wa.me/5541996910927?text=${msg}`);
+    }
+  </script>
+</body>
+
+</html>

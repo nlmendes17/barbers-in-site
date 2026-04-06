@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbearia HMRO</title>
+  <style>
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --accent: #888;
+      --insta: #E1306C;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 2px solid var(--text);
+      flex-wrap: wrap;
+    }
+
+    header img.logo {
+      height: 120px;
+      animation: zoomIn 1s ease;
+    }
+
+    header img.side-icon {
+      height: 50px;
+      animation: fadeIn 1s ease;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #111;
+      padding: 15px;
+      gap: 10px;
+      animation: slideDown 1s ease;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+      padding: 10px 15px;
+      border-left: 2px solid #333;
+    }
+
+    nav a:first-child {
+      border-left: none;
+    }
+
+    nav a:hover {
+      color: var(--insta);
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--text);
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 30px;
+    }
+
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .carousel img {
+      height: 300px;
+      border-radius: 12px;
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    .instagram-link {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px;
+      text-decoration: none;
+      color: var(--insta);
+    }
+
+    @media (max-width: 768px) {
+      header img.logo {
+        height: 90px;
+      }
+
+      header img.side-icon {
+        height: 40px;
+      }
+
+      .carousel img {
+        width: 90%;
+        max-width: 300px;
+      }
+
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        border-left: none;
+        border-right: 1px solid #333;
+        padding: 8px 12px;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+
+      nav a:last-child {
+        border-right: none;
+      }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="maestro.png" alt="Maestro" class="side-icon" />
+    <img src="logo.jpg" alt="Logo HMRO" class="logo" />
+    <img src="maestro1.png" alt="Maestro1" class="side-icon" />
+  </header>
+
+  <nav>
+    <a href="agendamento.html">Agendar Horário</a>
+    <a href="produtos.html">Nossos Produtos</a>
+    <a href="#localizacao">Localização</a>
+    <a href="#instagram">Instagram</a>
+  </nav>
+
+  <section id="barbearia">
+    <h2>Nossa Barbearia</h2>
+    <div class="carousel">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+    <img src="foto4.jpg">
+    <img src="foto5.jpg">
+    <img src="foto6.jpg">
+    <img scr="foto7.jpg">
+    <img scr="foto8.jpg">
+    <img scr="foto9.jpg">
+    <img scr="foto10.jpg">
+    <img scr="foto11.jpg">
+    <img scr="foto12.jpg">
+    </div>
+  </section>
+
+  <section id="instagram">
+    <h2>Instagram</h2>
+    <p><strong style="color: white;">Instagram</strong>
+      <a class="instagram-link" target="_blank" href="https://www.instagram.com/hmrobarbershop">@hmrobarbershop</a>
+    </p>
+  </section>
+
+  <section id="localizacao">
+    <h2>Como Chegar</h2>
+    <iframe
+      src="https://www.google.com/maps?q=Rua+David+Bodziak,+859,+Curitiba,+PR,+82710-260&output=embed"></iframe>
+  </section>
+</body>
+
+</html>

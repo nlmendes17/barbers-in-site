@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Agendamentos | Barbearia HMRO</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDgw1LNbHcg9QHyNZyapPWEEEuKYR2Tiz4",
+      authDomain: "barbearia-hmro.firebaseapp.com",
+      projectId: "barbearia-hmro",
+      storageBucket: "barbearia-hmro.appspot.com",
+      messagingSenderId: "1011141203420",
+      appId: "1:1011141203420:web:511360a8bee6015b70eb19"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    async function salvarAgendamento(data, hora, cliente) {
+      await addDoc(collection(db, "agendamentos"), {
+        data,
+        hora,
+        cliente,
+        status: "Confirmado"
+      });
+    }
+
+    async function carregarHorariosConfirmados() {
+      const snapshot = await getDocs(collection(db, "agendamentos"));
+      const agendamentos = snapshot.docs.map(doc => doc.data());
+      return agendamentos
+        .filter(item => item.status === 'Confirmado')
+        .map(item => {
+          const [dia, mes, ano] = item.data.split('/');
+          const [hora, minuto] = item.hora.split(':');
+          const dataISO = new Date(ano, mes - 1, dia, hora, minuto).toISOString();
+          return {
+            title: item.cliente || 'Reservado',
+            start: dataISO
+          };
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      const calendarEl = document.getElementById('calendar');
+      const eventos = await carregarHorariosConfirmados();
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: window.innerWidth < 768 ? 'timeGridDay' : 'timeGridWeek',
+        locale: 'pt-br',
+        slotMinTime: "09:00:00",
+        slotMaxTime: "20:00:00",
+        allDaySlot: false,
+        selectable: true,
+        nowIndicator: true,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'timeGridDay,timeGridWeek'
+        },
+        select: function (info) {
+          const data = info.start.toLocaleDateString('pt-BR');
+          const hora = info.start.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+          const nome = prompt("Qual o nome do cliente para esse horário?");
+          if (!nome) return;
+
+          salvarAgendamento(data, hora, nome);
+
+          const mensagem = `Olá, tudo bem? Reservei o horário ${data} às ${hora} pelo site, logo estou aí.`;
+          const link = `https://wa.me/5541996910927?text=${encodeURIComponent(mensagem)}`;
+          window.open(link, '_blank');
+        },
+        businessHours: {
+          daysOfWeek: [1, 2, 3, 4, 5, 6],
+          startTime: '09:00',
+          endTime: '20:00',
+        },
+        events: eventos
+      });
+      calendar.render();
+
+      document.getElementById('form-agendamento').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const dataInput = document.getElementById('data').value;
+        const horaInput = document.getElementById('hora').value;
+        const nomeInput = document.getElementById('cliente').value;
+        const [ano, mes, dia] = dataInput.split('-');
+        const dataFormatada = `${dia}/${mes}/${ano}`;
+
+        await salvarAgendamento(dataFormatada, horaInput, nomeInput);
+        alert('Horário adicionado com sucesso! Recarregue a página para ver no calendário.');
+        this.reset();
+      });
+
+      const tabela = document.getElementById('tabela-agendamentos');
+      onSnapshot(collection(db, "agendamentos"), snapshot => {
+        tabela.innerHTML = '';
+        snapshot.docs.filter(doc => doc.data().status === "Confirmado").forEach(doc => {
+          const a = doc.data();
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${a.data}</td><td>${a.hora}</td><td>${a.cliente || '-'}</td>`;
+          tabela.appendChild(tr);
+        });
+      });
+
+      document.getElementById('logout').addEventListener('click', () => {
+        signOut(auth).then(() => window.location.href = "login.html");
+      });
+    });
+  </script>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      padding: 15px 20px;
+    }
+
+    header h1 {
+      font-size: 1.2rem;
+    }
+
+    #logout {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #calendar,
+    form,
+    #lista-agendamentos {
+      max-width: 900px;
+      margin: 20px auto;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input[type="date"],
+    input[type="time"],
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 15px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .fc-daygrid-event {
+      background-color: white !important;
+      color: black !important;
+      border: none !important;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #222;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1rem;
+      }
+
+      #calendar,
+      form,
+      #lista-agendamentos {
+        width: 95%;
+        padding: 15px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Barbearia HMRO - Admin</h1>
+    <button id="logout">Sair</button>
+  </header>
+
+  <div id="calendar"></div>
+
+  <form id="form-agendamento">
+    <h2>Adicionar manualmente</h2>
+    <label for="cliente">Nome do Cliente:</label>
+    <input type="text" id="cliente" required>
+
+    <label for="data">Data:</label>
+    <input type="date" id="data" required>
+
+    <label for="hora">Hora:</label>
+    <input type="time" id="hora" required>
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <div id="lista-agendamentos">
+    <h2>Horários Confirmados</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Cliente</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-agendamentos"></tbody>
+    </table>
+  </div>
+</body>
+
+</html>
